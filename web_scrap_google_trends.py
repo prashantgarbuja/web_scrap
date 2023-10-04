@@ -37,20 +37,22 @@ searches = soup.find_all('div', class_='search-count-title')
 file_name = 'GoogleTrends.csv'
 
 #os.makedirs(os.path.dirname(file_path), exist_ok=True)
-
-with open(file_name, 'w',
-            newline='') as csvfile:
-    csvwriter = csv.writer(csvfile)
-    csvwriter.writerow(['Google Top Trends in Australia'])
-    csvwriter.writerow(
-            ['Rank',
-             'Trending Topic', 
-            'Views']
-            )
-    
-    for index, (trending_topic, search) in enumerate(zip(trending_topics, searches), start=1):
-            csvwriter.writerow(
-                [index, 
-                trending_topic.text.strip(), 
-                search.text.strip()]
+try:
+    with open(file_name, 'w',
+                newline='') as csvfile:
+        csvwriter = csv.writer(csvfile)
+        csvwriter.writerow(['Google Top Trends in Australia'])
+        csvwriter.writerow(
+                ['Rank',
+                'Trending Topic', 
+                'Views']
                 )
+        
+        for index, (trending_topic, search) in enumerate(zip(trending_topics, searches), start=1):
+                csvwriter.writerow(
+                    [index, 
+                    trending_topic.text.strip(), 
+                    search.text.strip()]
+                    )
+except Exception as e:
+    print(f"An error occurred: {e}")
