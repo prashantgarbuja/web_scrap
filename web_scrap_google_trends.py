@@ -34,10 +34,12 @@ trending_topics = soup.find_all('div', class_='details-top')
 
 searches = soup.find_all('div', class_='search-count-title')
 
-file_name = './output/GoogleTrends.csv'
-os.makedirs(os.path.dirname(file_name), exist_ok=True)
+file_name = 'output/GoogleTrends.csv'
+file_path = os.path.join(os.getcwd(), file_name)
 
-with open(file_name, 'w',
+os.makedirs(os.path.dirname(file_path), exist_ok=True)
+
+with open(file_path, 'w',
             newline='') as csvfile:
     csvwriter = csv.writer(csvfile)
     csvwriter.writerow(['Google Top Trends in Australia'])
@@ -53,7 +55,3 @@ with open(file_name, 'w',
                 trending_topic.text.strip(), 
                 search.text.strip()]
                 )
-
-# Extract information from these elements
-for index, (trending_topic, search) in enumerate(zip(trending_topics, searches), start=1):
-    print(index, trending_topic.text.strip() + ": " + search.text.strip())
