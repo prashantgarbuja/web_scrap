@@ -34,10 +34,10 @@ trending_topics = soup.find_all('div', class_='details-top')
 
 searches = soup.find_all('div', class_='search-count-title')
 
-file_name = 'output/GoogleTrends.csv'
+file_name = 'GoogleTrends.csv'
 file_path = os.path.join(os.getcwd(), file_name)
 
-os.makedirs(os.path.dirname(file_path), exist_ok=True)
+#os.makedirs(os.path.dirname(file_path), exist_ok=True)
 
 with open(file_path, 'w',
             newline='') as csvfile:
