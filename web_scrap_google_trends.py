@@ -53,3 +53,7 @@ with open(file_name, 'w',
                 trending_topic.text.strip(), 
                 search.text.strip()]
                 )
+
+# Extract information from these elements
+for index, (trending_topic, search) in enumerate(zip(trending_topics, searches), start=1):
+    print(index, trending_topic.text.strip() + ": " + search.text.strip())
