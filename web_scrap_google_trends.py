@@ -6,6 +6,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from bs4 import BeautifulSoup
 import csv
+import os
 
 # Set up Chrome options with web browser pop-up disabled
 chrome_options = Options()
@@ -33,7 +34,8 @@ trending_topics = soup.find_all('div', class_='details-top')
 
 searches = soup.find_all('div', class_='search-count-title')
 
-file_name = 'GoogleTrends.csv'
+file_name = 'output/Google Trends.csv'
+os.makedirs(os.path.dirname(file_name), exist_ok=True)
 
 with open(file_name, 'w',
             newline='') as csvfile:
