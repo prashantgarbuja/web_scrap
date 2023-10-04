@@ -33,3 +33,9 @@ jobs:
       - name: Run Python script
         run: python web_scrap_google_trends.py
         working-directory: .
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: my-artifact
+          path: GoogleTrends.csv
