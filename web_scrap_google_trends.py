@@ -1,9 +1,12 @@
 #Web Scrapping Top Google trends in Australia
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from bs4 import BeautifulSoup
 import csv
-import time
+import os
 
 # Set up Chrome options with web browser pop-up disabled
 chrome_options = Options()
@@ -16,7 +19,9 @@ driver = webdriver.Chrome(options=chrome_options)
 
 driver.get(url)
 
-time.sleep(5)
+# Wait for the elements to be present
+wait = WebDriverWait(driver, 10)
+wait.until(EC.presence_of_element_located((By.CLASS_NAME, 'details-top')))
 
 page_source = driver.page_source
 
@@ -29,7 +34,8 @@ trending_topics = soup.find_all('div', class_='details-top')
 
 searches = soup.find_all('div', class_='search-count-title')
 
-file_name = 'Google Trends.csv'
+file_name = 'output/Google Trends.csv'
+os.makedirs(os.path.dirname(file_name), exist_ok=True)
 
 with open(file_name, 'w',
             newline='') as csvfile:
