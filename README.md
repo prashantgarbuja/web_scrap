@@ -9,7 +9,7 @@ This project involves web scraping Google Trends data in Australia (or Anywhere 
 Before running the code, make sure you have the following installed:
 
 - Python
-- Selenium
+- Selenium (for dynamic page to load first and extract data based on the html elements)
 - BeautifulSoup
 
 You can install the required packages by running:
@@ -40,5 +40,5 @@ The project is set up with a GitHub Actions workflow that automates the web scra
 ## Artifacts
 The resulting CSV file containing the Google Trends data is stored as an artifact for each workflow run. You can download the artifact from the [Actions tab](https://github.com/prashantgarbuja/web_scrap/actions/workflows/web_scrap_scheduler.yml) of this repository.
 
-Contributing
+## Contributing
 Feel free to contribute to this project by creating pull requests or reporting issues.
