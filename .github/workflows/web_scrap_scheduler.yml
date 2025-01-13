@@ -3,6 +3,7 @@ name: Web Scrape Daily
 on:
   schedule:
     - cron: '0 22 * * *' # Runs daily 10pm UTC ~ 9am AEDT Sydney
+  workflow_dispatch: # Allows manual triggering
 
 jobs:
   run:
